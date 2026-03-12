@@ -25,7 +25,7 @@ body {
   font-family: var(--font-body);
   background: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 2.6;
   overflow-x: hidden;
 }
 
@@ -106,13 +106,12 @@ img {
 }
 
 .nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 40px;
+  height: 90px;
   background: #fff;
 }
 
@@ -121,13 +120,23 @@ img {
   align-items: center;
   height: 100%;
   padding: 5px 0;
+  margin-left: 0;
+  justify-content: flex-start;
 }
 
+/* Adiciona espaço flex entre logo e menu para centralizar o menu no desktop */
+.nav-menu {
+  flex: 1;
+}
+
+/* --- Logo imagem permanece igual --- */
 .logo img {
-  height: 45px;
+  height: 95px;
   width: auto;
   display: block;
-  max-height: 100%;
+  max-height: 113%;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .nav-toggle {
@@ -172,6 +181,7 @@ img {
     z-index: 1200;
     transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
     border-bottom: 1px solid var(--color-border);
+    flex: unset;
   }
   .nav-menu.open {
     transform: translateY(0);
@@ -187,6 +197,28 @@ img {
     padding: 14px 24px;
     border-radius: 4px;
     transition: background 0.2s, color 0.2s;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  /* Cores aquarela especiais no hover para Sobre, Agenda, Acervo e Contatos */
+  .nav-menu li:nth-child(1) a:hover,
+  .nav-menu li:nth-child(1) a:focus {
+    color: #00a2e8; /* vermelho aquarela */
+    background: rgba(237, 28, 36, 0.07);
+  }
+  .nav-menu li:nth-child(2) a:hover,
+  .nav-menu li:nth-child(2) a:focus {
+    color: #39b54a; /* laranja aquarela */
+    background: rgba(247, 148, 29, 0.07);
+  }
+  .nav-menu li:nth-child(3) a:hover,
+  .nav-menu li:nth-child(3) a:focus {
+    color: #f7941d; /* verde aquarela */
+    background: rgba(57, 181, 74, 0.07);
+  }
+  .nav-menu li:nth-child(4) a:hover,
+  .nav-menu li:nth-child(4) a:focus {
+    color: #ed1c24; /* azul aquarela */
+    background: rgba(0, 162, 232, 0.07);
   }
   .nav-menu li a:hover,
   .nav-menu li a:focus {
@@ -202,70 +234,117 @@ img {
 }
 
 @media (min-width: 993px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
   .nav-menu {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 28px;
+    justify-content: center; /* Centraliza os itens do menu */
+    gap: 70px;
     position: static;
     background: none;
     height: auto;
     transform: none;
     opacity: 1;
     visibility: visible;
-    padding: 0;
+    padding: 0; /* Remove afastamento lateral para centrar realmente */
+    flex: 1; /* Ocupa todo o espaço disponível para permitir centralização */
   }
   .nav-menu li a {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* stack nome + linha */
     align-items: center;
-    padding: 0;
+    padding: 0 0.25em;
     text-decoration: none;
     color: #1a202c;
-    transition: transform 0.15s, color 0.2s;
+    transition: color 0.2s;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Bebas Neue', sans-serif;
+    position: relative;
+    background: transparent;
   }
+  .nav-menu li a span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    position: relative;
+    line-height: 1.1;
+    z-index: 1;
+  }
+  /* Linha responsiva sob o texto: só para os nomes do menu principal */
+  .nav-menu li a span::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    margin: 6px auto 0 auto;
+    border-radius: 2px;
+    transition: width 0.27s cubic-bezier(.4,1.3,.55,.99), background 0.16s;
+    background: transparent;
+    /* Cada menu recebe uma cor diferente no hover conforme o item */
+  }
+  .nav-menu li:nth-child(1) a span::after { background: #00a2e8; }
+  .nav-menu li:nth-child(2) a span::after { background: #39b54a; }
+  .nav-menu li:nth-child(3) a span::after { background: #f7941d; }
+  .nav-menu li:nth-child(4) a span::after { background: #ed1c24; }
+
+  .nav-menu li:nth-child(1) a:hover span::after,
+  .nav-menu li:nth-child(1) a:focus span::after,
+  .nav-menu li:nth-child(2) a:hover span::after,
+  .nav-menu li:nth-child(2) a:focus span::after,
+  .nav-menu li:nth-child(3) a:hover span::after,
+  .nav-menu li:nth-child(3) a:focus span::after,
+  .nav-menu li:nth-child(4) a:hover span::after,
+  .nav-menu li:nth-child(4) a:focus span::after {
+    width: 100%;
+  }
+
   .nav-menu li a:hover,
   .nav-menu li a:focus {
     color: var(--color-primary);
-    transform: translateY(-3px);
   }
+  /* Cores aquarela especiais no hover para Sobre, Agenda, Acervo e Contatos */
+  .nav-menu li:nth-child(1) a:hover,
+  .nav-menu li:nth-child(1) a:focus {
+    color: #00a2e8; /* vermelho aquarela */
+  }
+  .nav-menu li:nth-child(2) a:hover,
+  .nav-menu li:nth-child(2) a:focus {
+    color: #39b54a; /* laranja aquarela */
+  }
+  .nav-menu li:nth-child(3) a:hover,
+  .nav-menu li:nth-child(3) a:focus {
+    color: #f7941d; /* verde aquarela */
+  }
+  .nav-menu li:nth-child(4) a:hover,
+  .nav-menu li:nth-child(4) a:focus {
+    color: #ed1c24; /* azul aquarela */
+  }
+
   .icon-circle {
-    width: 40px;
-    height: 40px;
-    background-color: #1a202c;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 8px;
-    color: #fff;
-    font-size: 1.25rem;
-    transition: transform 0.25s, filter 0.2s;
-  }
-  .nav-menu li a span {
-    font-size: 0.87rem;
-    font-weight: 600;
-    text-transform: capitalize;
+    display: none !important;
   }
   .nav-toggle {
     display: none;
   }
 }
 
-/* Ícones de cor customizada por item do menu */
-.nav-menu li:nth-child(1) .icon-circle { background-color: #0047ff; }
-.nav-menu li:nth-child(2) .icon-circle { background-color: #00d86f; }
-.nav-menu li:nth-child(3) .icon-circle {
-  background-color: #ffe600;
-  color: #1a202c;
-}
-.nav-menu li:nth-child(4) .icon-circle { background-color: #ff9800; }
-.nav-menu li:nth-child(5) .icon-circle { background-color: #ff0000; }
+/* Remove estilos de ícones customizados */
+.nav-menu li:nth-child(1) .icon-circle,
+.nav-menu li:nth-child(2) .icon-circle,
+.nav-menu li:nth-child(3) .icon-circle,
+.nav-menu li:nth-child(4) .icon-circle,
+.nav-menu li:nth-child(5) .icon-circle,
 .nav-menu li a:hover .icon-circle,
 .nav-menu li a:focus .icon-circle {
-  filter: brightness(1.18);
-  transform: scale(1.08);
-  transition: 0.22s;
+  display: none !important;
 }
 
 /* ===== Sections ===== */
@@ -334,7 +413,7 @@ img {
 
 .social-icons {
   display: flex;
-  gap: 10px;
+  gap: 30px;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
@@ -343,7 +422,7 @@ img {
 .social-icons a {
   color: white;
   text-decoration: none;
-  font-size: 0.4rem;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
