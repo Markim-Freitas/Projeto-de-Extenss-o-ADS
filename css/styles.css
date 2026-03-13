@@ -29,10 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  padding-top: 80px; /* Compensa o header fixo */
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -44,11 +40,33 @@ ul {
   margin: 0;
 }
 
+/* Regra global para imagens - Remover o max-width */
 img {
-  max-width: 100%;
   height: auto;
   display: block;
 }
+
+/* Exemplo: Para aplicar max-width apenas a uma imagem específica, use uma classe */
+.hero-logo2 {
+  display: block;
+  margin: 0 auto 1rem auto;
+  max-width: 55%;
+  height: 300px;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.08));
+  border-radius: 1.5rem;
+  transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+  box-shadow: 0 2px 15px rgba(196, 30, 58, 0.08);
+}
+.hero-logo2:hover,
+.hero-logo2:focus {
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow: 0 4px 32px 0 rgba(196, 30, 58, 0.16),0 8px 38px 0 rgba(0,0,0,.10);
+}
+
+
+
+
+/* Agora você pode controlar o max-width por imagem, adicionando/removendo a classe "img-max-width" no HTML */
 
 .container {
   max-width: 1200px;
@@ -103,6 +121,29 @@ img {
   z-index: 1000;
   background: #fff;
   border-bottom: 1px solid #eee;
+}
+
+/* Container dos ícones */
+#navbar-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.social-icons a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 
 .nav {
@@ -368,10 +409,130 @@ img {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: linear-gradient(135deg, #1a0a0e 0%, #0a0a0b 50%, #0a0e14 100%);
-  background-image: 
-    linear-gradient(rgba(196, 30, 58, 0.15) 0%, transparent 50%),
-    linear-gradient(135deg, #1a0a0e 0%, #0a0a0b 100%);
+  background: linear-gradient(135deg, #fff 0%, #fafad2 100%);
+  overflow: hidden;
+}
+
+/* CAMADA PRINCIPAL */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 2;
+
+  background-image:
+    linear-gradient(#f44336 100%, transparent 0),
+    linear-gradient(#a7ffeb 100%, transparent 0),
+    linear-gradient(#fbc02d 100%, transparent 0),
+    linear-gradient(#009688 100%, transparent 0),
+    linear-gradient(#4caf50 100%, transparent 0),
+    linear-gradient(#9c27b0 100%, transparent 0),
+    linear-gradient(#2196f3 100%, transparent 0),
+    linear-gradient(#ff9800 100%, transparent 0),
+    linear-gradient(#e91e63 100%, transparent 0),
+    linear-gradient(#ffeb3b 100%, transparent 0),
+    linear-gradient(#03a9f4 100%, transparent 0),
+    linear-gradient(#8bc34a 100%, transparent 0),
+    linear-gradient(#ff5722 100%, transparent 0),
+    linear-gradient(#607d8b 100%, transparent 0),
+    linear-gradient(#ff4081 100%, transparent 0),
+    linear-gradient(#00e676 100%, transparent 0),
+    linear-gradient(#2979ff 100%, transparent 0),
+    linear-gradient(#ff9100 100%, transparent 0),
+    linear-gradient(#e040fb 100%, transparent 0),
+    linear-gradient(#00bcd4 100%, transparent 0),
+    linear-gradient(#ff1744 100%, transparent 0),
+    linear-gradient(#cddc39 100%, transparent 0),
+    linear-gradient(#673ab7 100%, transparent 0),
+    linear-gradient(#ffc107 100%, transparent 0),
+    linear-gradient(#3f51b5 100%, transparent 0),
+    linear-gradient(#ff6f00 100%, transparent 0),
+    linear-gradient(#0091ea 100%, transparent 0),
+    linear-gradient(#00c853 100%, transparent 0),
+    linear-gradient(#aa00ff 100%, transparent 0),
+    linear-gradient(#ffab00 100%, transparent 0);
+
+  background-position:
+    5% 5%, 10% 12%, 15% 15%, 20% 18%, 25% 10%, 30% 20%, 35% 5%,
+    40% 15%, 45% 8%, 50% 18%, 55% 12%, 60% 20%, 65% 10%, 70% 22%,
+    75% 5%, 80% 15%, 85% 8%, 90% 18%, 95% 10%, 12% 30%, 22% 35%,
+    32% 28%, 42% 40%, 52% 32%, 62% 38%, 72% 30%, 82% 35%, 92% 28%,
+    18% 45%, 68% 42%;
+
+  background-size:
+    10px 18px, 12px 10px, 8px 15px, 14px 9px, 10px 12px, 15px 10px, 9px 20px,
+    11px 16px, 13px 8px, 10px 14px, 13px 13px, 7px 18px, 16px 10px, 12px 18px,
+    9px 14px, 11px 16px, 8px 13px, 14px 10px, 12px 12px, 10px 17px,
+    15px 9px, 9px 19px, 13px 11px, 10px 15px, 16px 8px, 12px 16px,
+    14px 12px, 8px 14px, 11px 17px, 13px 10px;
+
+  background-repeat: no-repeat;
+
+  animation: confetti-fall 3s linear infinite;
+}
+
+/* CAMADA EXTRA */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 2;
+
+  background-image:
+    linear-gradient(#ff4081 100%, transparent 0),
+    linear-gradient(#00e676 100%, transparent 0),
+    linear-gradient(#2979ff 100%, transparent 0),
+    linear-gradient(#ff9100 100%, transparent 0),
+    linear-gradient(#e040fb 100%, transparent 0),
+    linear-gradient(#00bcd4 100%, transparent 0),
+    linear-gradient(#ffd600 100%, transparent 0),
+    linear-gradient(#ff3d00 100%, transparent 0),
+    linear-gradient(#00acc1 100%, transparent 0),
+    linear-gradient(#76ff03 100%, transparent 0);
+
+  background-position:
+    20% 60%, 30% 70%, 40% 80%, 50% 65%, 60% 85%,
+    70% 75%, 80% 60%, 90% 70%, 15% 80%, 55% 90%;
+
+  background-size:
+    12px 20px, 18px 10px, 10px 15px, 15px 15px, 9px 18px,
+    20px 8px, 14px 12px, 11px 16px, 16px 9px, 13px 14px;
+
+  background-repeat: no-repeat;
+
+  animation: confetti-fall 4s linear infinite;
+  opacity: 0.7;
+}
+
+/* ANIMAÇÃO */
+@keyframes confetti-fall {
+
+  0% {
+    background-position:
+      5% 5%, 10% 12%, 15% 15%, 20% 18%, 25% 10%, 30% 20%, 35% 5%,
+      40% 15%, 45% 8%, 50% 18%, 55% 12%, 60% 20%, 65% 10%, 70% 22%,
+      75% 5%, 80% 15%, 85% 8%, 90% 18%, 95% 10%, 12% 30%, 22% 35%,
+      32% 28%, 42% 40%, 52% 32%, 62% 38%, 72% 30%, 82% 35%, 92% 28%,
+      18% 45%, 68% 42%;
+  }
+
+  100% {
+    background-position:
+      5% 105%, 10% 112%, 15% 115%, 20% 118%, 25% 110%, 30% 120%, 35% 105%,
+      40% 115%, 45% 108%, 50% 118%, 55% 112%, 60% 120%, 65% 110%, 70% 122%,
+      75% 105%, 80% 115%, 85% 108%, 90% 118%, 95% 110%, 12% 130%, 22% 135%,
+      32% 128%, 42% 140%, 52% 132%, 62% 138%, 72% 130%, 82% 135%, 92% 128%,
+      18% 145%, 68% 142%;
+  }
+
 }
 
 .hero-overlay {
@@ -383,17 +544,15 @@ img {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
-  padding: 2rem;
 }
 
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
+
+@keyframes aquarela-gradient-move {
+  to {
+    background-position: -200% center;
+  }
 }
 
 .hero-tagline {
@@ -402,28 +561,7 @@ img {
   margin-bottom: 2rem;
 }
 
-/* Container dos ícones */
-#navbar-box {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  padding: 5px 10px;
-}
 
-.social-icons {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.social-icons a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
 
 @media (max-width: 768px) {
   #navbar-box {
@@ -489,9 +627,11 @@ img {
 }
 
 .agenda-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
+  justify-items: center;
+  justify-content: center;
 }
 
 .agenda-card {
