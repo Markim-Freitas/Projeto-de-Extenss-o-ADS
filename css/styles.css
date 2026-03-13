@@ -400,6 +400,31 @@ img {
   text-align: center;
   margin-bottom: 2.5rem;
   letter-spacing: 0.02em;
+  color: var(--color-bg);
+}
+
+.section-intro {
+  color: #000;
+}
+
+
+@keyframes frevo-pulse-dance {
+  0% { transform: scale(1) rotate(-3deg); filter: brightness(1); }
+  10% { transform: scale(1.08) rotate(3deg); filter: brightness(1.1); }
+  20% { transform: scale(1.1) rotate(-6deg); }
+  30% { transform: scale(1.13) rotate(4deg);}
+  40% { transform: scale(0.98) rotate(-2deg);}
+  50% { transform: scale(1.1) rotate(0deg);}
+  60% { transform: scale(1.15) rotate(6deg);}
+  70% { transform: scale(1.05) rotate(-4deg);}
+  80% { transform: scale(1.1) rotate(2deg);}
+  90% { transform: scale(1.08) rotate(-2deg); filter: brightness(1.08);}
+  100% { transform: scale(1) rotate(0deg); filter: brightness(1);}
+}
+.frevo-dance {
+  animation: frevo-pulse-dance 1.2s infinite cubic-bezier(.3, .6, .5, 1.2);
+  will-change: transform, filter;
+  transform-origin: 53% 90%; /* Pivô da dança no chão, sensível p/ logo */
 }
 
 /* ===== Hero ===== */
@@ -593,7 +618,7 @@ img {
 
 /* ===== Agenda ===== */
 .agenda-section {
-  background: var(--color-bg-card);
+  background: #ffffff;
 }
 
 .agenda-tabs {
@@ -602,49 +627,62 @@ img {
   gap: 0.5rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  background: linear-gradient(90deg, #f44336 0%, #fbc02d 33%, #00bcd4 66%, #4caf50 100%);
+  border-radius: 12px;
+  padding: 0.4rem 0.5rem;
 }
 
 .agenda-tab {
   padding: 0.6rem 1.2rem;
   font-family: var(--font-body);
   font-weight: 600;
-  background: var(--color-bg);
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+  background: #fefefe;
+  color: #ca007a; /* vibrante, alegre */
+  border: 2px solid #fff176; /* amarelo frevo destacando a borda */
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition: 
+    background 0.2s, 
+    color 0.2s, 
+    border-color 0.2s, 
+    box-shadow 0.2s;
+  box-shadow: 0 0.5px 4px 0 rgba(222,44,74,0.07);
 }
 .agenda-tab:hover,
 .agenda-tab:focus {
-  color: var(--color-text);
-  border-color: var(--color-text-muted);
+  color: #f44336;
+  background: #fff59d; /* amarelo leve no hover */
+  border-color: #f44336;
+  box-shadow: 0 2px 10px 0 rgba(252, 176, 36, 0.22);
 }
 .agenda-tab.active {
-  background: var(--color-primary);
+  background: linear-gradient(90deg, #f44336 0%, #fbc02d 100%);
   color: #fff;
-  border-color: var(--color-primary);
+  border-color: #c41e3a;
+  box-shadow: 0 2px 18px 0 rgba(255, 0, 95, 0.19);
 }
 
 .agenda-grid {
   display: flex;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
   justify-items: center;
   justify-content: center;
 }
 
 .agenda-card {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  background: #fffbe7;
+  border: 2px solid #020202;
+  border-radius: 16px;
   padding: 1.5rem;
-  transition: border-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 24px 0 rgba(231, 84, 128, 0.10);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .agenda-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
+  border-color: #e040fb;
+  box-shadow: 0 8px 24px 0 rgba(39, 198, 183, 0.17);
+  transform: translateY(-4px) scale(1.03) rotate(-1deg);
 }
 
 .agenda-card.hidden {
@@ -655,31 +693,38 @@ img {
   display: block;
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-primary);
+  font-weight: 900;
+  color: #f44336;
   margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #000000 40%, #ff4081 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .agenda-card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.13rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
+  color: #c41e3a;
 }
 
 .agenda-link {
-  font-size: 0.97rem;
-  color: var(--color-primary);
+  font-size: 1rem;
+  color: #000000;
   text-decoration: underline;
+  font-weight: 600;
   cursor: pointer;
+  transition: color 0.18s;
 }
 .agenda-link:hover,
 .agenda-link:focus {
-  color: var(--color-primary-hover);
+  color: #f44336;
 }
 
 /* ===== Timeline ===== */
 .timeline-section {
-  background: var(--color-bg);
+  background: #ffffff;
 }
 
 .timeline {
@@ -719,7 +764,7 @@ img {
 }
 
 .timeline-content p {
-  color: var(--color-text-muted);
+  color: #000000;
 }
 
 /* ===== Discografia ===== */
@@ -756,7 +801,7 @@ img {
 
 /* ===== Loja ===== */
 .loja-section {
-  background: var(--color-bg);
+  background: #ffffff;
 }
 
 .loja-grid {
@@ -800,7 +845,7 @@ img {
 
 /* ===== Fotos & Eventos ===== */
 .fotos-section {
-  background: var(--color-bg-card);
+  background:white;
 }
 
 .fotos-categories {
@@ -846,18 +891,27 @@ img {
 
 /* ===== Contato ===== */
 .contato-section {
-  background: var(--color-bg);
+  background: white;
+}
+
+.contato-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  /* Garante centralização vertical e horizontal */
 }
 
 .contato-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .contato-item {
+  color: white;
   padding: 1.5rem;
-  background: var(--color-bg-card);
+  background: #fff;
   border: 1px solid var(--color-border);
   border-radius: 8px;
 }
@@ -880,20 +934,20 @@ img {
 }
 
 .contato-item a:hover {
-  color: var(--color-primary);
+  color: white;
 }
 
 /* ===== Footer ===== */
 .footer {
   padding: 2rem 1.5rem;
-  background: var(--color-bg-card);
-  border-top: 1px solid var(--color-border);
+  background: white;
+  border-top: 1px solid black;
   text-align: center;
 }
 
 .footer p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: black;
 }
 
 .footer-dev {
@@ -920,6 +974,7 @@ img {
 .newsletter-label {
   display: block;
   margin-bottom: 0.5rem;
+  color: #000;
 }
 
 .newsletter-input {
@@ -927,8 +982,8 @@ img {
   padding: 0.6rem;
   border-radius: 3px;
   border: 1px solid var(--color-border);
-  color: var(--color-text);
-  background: var(--color-bg-card);
+  color: #000;
+  background: white;
   font-family: var(--font-body);
 }
 
@@ -936,7 +991,7 @@ img {
   margin-top: 1rem;
   padding: 0.7rem 2rem;
   background: var(--color-primary);
-  color: #fff;
+  color: #000000;
   border: none;
   border-radius: 4px;
   font-family: var(--font-body);
@@ -947,4 +1002,5 @@ img {
 .newsletter-submit:hover,
 .newsletter-submit:focus {
   background: var(--color-primary-hover);
+  color: #000;
 }

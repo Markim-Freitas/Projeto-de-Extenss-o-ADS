@@ -1,6 +1,29 @@
 (function () {
   'use strict';
 
+const music = document.getElementById("bg-music");
+let started = false;
+
+function startMusic() {
+  if (started) return;
+  started = true;
+
+  music.volume = 0;
+  music.play();
+
+  let volume = 0;
+  const fade = setInterval(() => {
+    if (volume < 0.5) {
+      volume += 0.02;
+      music.volume = volume;
+    } else {
+      clearInterval(fade);
+    }
+  }, 100);
+}
+
+window.addEventListener("scroll", startMusic);
+
   // Loader
   const loader = document.getElementById('loader');
   if (loader) {
@@ -68,3 +91,5 @@
     });
   });
 })();
+
+
