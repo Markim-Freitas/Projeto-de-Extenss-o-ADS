@@ -618,7 +618,7 @@ img {
 
 /* ===== Agenda ===== */
 .agenda-section {
-  background: #ffffff;
+  background: linear-gradient(50deg, #fff 0%, #fafad2 90%);
 }
 
 .agenda-tabs {
@@ -724,7 +724,7 @@ img {
 
 /* ===== Timeline ===== */
 .timeline-section {
-  background: #ffffff;
+  background: linear-gradient(100deg, #fff 0%, #fafad2 90%);
 }
 
 .timeline {
@@ -801,7 +801,7 @@ img {
 
 /* ===== Loja ===== */
 .loja-section {
-  background: #ffffff;
+  background: linear-gradient(40deg, #fff 0%, #fafad2 90%);
 }
 
 .loja-grid {
@@ -845,7 +845,7 @@ img {
 
 /* ===== Fotos & Eventos ===== */
 .fotos-section {
-  background:white;
+  background: linear-gradient(125deg, #fff 0%, #fafad2 90%);
 }
 
 .fotos-categories {
@@ -940,7 +940,7 @@ img {
 /* ===== Footer ===== */
 .footer {
   padding: 2rem 1.5rem;
-  background: white;
+  background: linear-gradient(100deg, #fff 0%, #fafad2 90%);
   border-top: 1px solid black;
   text-align: center;
 }

@@ -1,28 +1,44 @@
 (function () {
   'use strict';
 
-const music = document.getElementById("bg-music");
-let started = false;
+  // Elementos e variáveis globais fora de funções para garantir escopo consistente
+  const music = document.getElementById("bg-music");
+  let started = false;
 
-function startMusic() {
-  if (started) return;
-  started = true;
+  function startMusicOnUserGesture() {
+    if (started) return;
+    started = true;
 
-  music.volume = 0;
-  music.play();
-
-  let volume = 0;
-  const fade = setInterval(() => {
-    if (volume < 0.5) {
-      volume += 0.02;
-      music.volume = volume;
-    } else {
-      clearInterval(fade);
+    if (music) {
+      music.volume = 0;
+      const playPromise = music.play();
+      if (playPromise !== undefined && typeof playPromise.then === 'function') {
+        playPromise.then(() => {
+          let volume = 0;
+          const fade = setInterval(() => {
+            if (volume < 0.5) {
+              volume += 0.02;
+              music.volume = Math.min(volume, 0.5);
+            } else {
+              music.volume = 0.5;
+              clearInterval(fade);
+            }
+          }, 100);
+        }).catch(() => {
+          // Se der erro, permitir nova tentativa em um próximo gesto
+          started = false;
+        });
+      } else {
+        // Em browsers antigos ou se play não retorna Promise: setar volume
+        music.volume = 0.5;
+      }
     }
-  }, 100);
-}
+  }
 
-window.addEventListener("scroll", startMusic);
+  // Adiciona listeners apenas para UM dos gestos, removendo duplicidade de triggers
+  ['wheel', 'scroll', 'touchstart', 'click'].forEach(evt => {
+    window.addEventListener(evt, startMusicOnUserGesture, { once: true });
+  });
 
   // Loader
   const loader = document.getElementById('loader');
@@ -64,7 +80,7 @@ window.addEventListener("scroll", startMusic);
   if (agendaTabs.length && agendaCards.length) {
     agendaTabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
-        var month = this.getAttribute('data-month');
+        const month = this.getAttribute('data-month');
         agendaTabs.forEach(function (t) { t.classList.remove('active'); });
         this.classList.add('active');
         agendaCards.forEach(function (card) {
@@ -81,9 +97,11 @@ window.addEventListener("scroll", startMusic);
   // Scroll suave para âncoras (reforço para alguns navegadores)
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
-      var href = this.getAttribute('href');
-      if (href === '#') return;
-      var target = document.querySelector(href);
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      // Corrigido: isolar apenas o id, sem fragmentos extras
+      const selector = href.replace(/(:|\.)/g, '\\$1');
+      const target = document.querySelector(selector);
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -91,5 +109,3 @@ window.addEventListener("scroll", startMusic);
     });
   });
 })();
-
-
