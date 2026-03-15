@@ -1081,3 +1081,70 @@ img {
     min-width: 0;
   }
 }
+
+/* CSS da Seção "Acervo" */
+.acervo-albuns-section {
+  background: white;
+  padding: 40px 0 0 0;
+}
+.albuns-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 36px;
+}
+.album-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 22px 0 rgba(252, 252, 252, 0.09);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.22s cubic-bezier(.4,1.08,.86,1.19), box-shadow 0.20s;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid #e6db8b; /* borda visível (exemplo: dourado pastel) */
+}
+.album-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(60,24,150,0.16);
+  transform: translateY(-10px) scale(1.035);
+  z-index: 1;
+  border-color: #968602; /* reforça a borda no hover */
+}
+.album-thumb {
+  background-size: cover;
+  background-position: center;
+  height: 210px;
+  display: block;
+}
+.album-info {
+  padding: 20px 18px 16px 18px;
+}
+.album-title {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c2250;
+  font-family: 'Oswald', 'Arial', sans-serif;
+}
+.album-desc {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+  font-family: 'Source Sans 3', 'Arial', sans-serif;
+}
+@media (max-width: 900px) {
+  .albuns-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .albuns-grid {
+    grid-template-columns: 1fr;
+  }
+  .album-thumb {
+    height: 160px;
+  }
+}
