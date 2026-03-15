@@ -1004,3 +1004,80 @@ img {
   background: var(--color-primary-hover);
   color: #000;
 }
+
+
+/* CSS da Seção "Sobre" */
+.sobre-section {
+  background: #fffbea;
+  padding: 54px 0 46px 0;
+}
+
+.sobre-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 36px;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.sobre-img-box {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 220px;
+}
+
+.sobre-fundador-img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  display: block;
+}
+
+
+.sobre-historia-box {
+  flex: 2 1 360px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(170,170,40,0.03);
+  padding: 24px 28px;
+  min-width: 290px;
+}
+
+.sobre-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.1rem;
+  color: #fbc02d;
+  margin-bottom: 18px;
+  margin-top: 0;
+  line-height: 1.16;
+}
+
+.sobre-historia {
+  color: #222;
+  font-size: 1.09rem;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.sobre-fundador-nome {
+  font-size: 1rem;
+  color: #969009;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+@media (max-width: 850px) {
+  .sobre-container {
+    flex-direction: column;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .sobre-historia-box, .sobre-img-box {
+    min-width: 0;
+  }
+}

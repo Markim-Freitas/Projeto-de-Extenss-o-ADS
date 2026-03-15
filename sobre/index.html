@@ -4,8 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pode Inté For — Grupo Referência em Salvaguarda do Frevo - SOBRE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
 </head>
 <body>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+      <div class="loader-spinner"></div>
+      <p>Carregando...</p>
+    </div>
+
+    <!-- Topbar preta com redes sociais -->
+    <div class="pif-navbar-topbar">
+      <div id="navbar-box">
+        <div class="social-icons">
+          <a href="https://www.instagram.com/pode.inte.for/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/user/Josembergdasilvaf" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a class="site-link" href="#">/PODEINTÉFOR</a>
+        </div>
+      </div>
+    </div>
+
+    <audio id="bg-music" loop preload="auto" style="display: none;">
+      <source src="/audio/aurorafrevoorquestra-faixa-10-0e0144.mp3" type="audio/mpeg" />
+      Seu navegador não suporta áudio HTML5.
+    </audio>
+
+    <!-- Header / Menu principal moderno e colorido -->
+    <header class="header">
+      <nav class="nav">
+        <a href="/sobre/index.html" class="logo">
+          <img src="/imag/logo.png" alt="Pode Inté For" />
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-menu">
+          <li>
+            <a href="/sobre/index.html"><span class="icon-circle"><i class="fas fa-home"></i></span><span>SOBRE</span></a>
+          </li>
+          <li>
+            <a href="/#agenda"><span class="icon-circle"><i class="fas fa-calendar-alt"></i></span><span>AGENDA</span></a>
+          </li>
+          <li>
+            <a href="/#acervo"><span class="icon-circle"><i class="fas fa-bolt"></i></span><span>ACERVO</span></a>
+          </li>
+          <li>
+            <a href="/#contatos"><span class="icon-circle"><i class="fas fa-vr-cardboard"></i></span><span>CONTATOS</span></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="sobre-section">
+        <div class="sobre-container">
+          <div class="sobre-img-box" style="display: flex; flex-direction: column; align-items: center; gap: 180px;">
+            <img src="/imag/Fundador.jpeg" alt="Foto do fundador do Pode Inté For" class="sobre-fundador-img"/>
+            <img src="/imag/Fundador 2.jpeg" alt="Fundador com integrantes do grupo" class="sobre-fundador-img" style="margin-top: 48px;" />
+          </div>
+          <!-- Nova foto adicionada perto do final do texto -->
+            
+          <div class="sobre-historia-box">
+            <h1 class="sobre-title">Como tudo começou</h1>
+            <p class="sobre-historia">
+              Fundada em março de 2013 por Josemberg Freitas, o Pode Inté For nasceu da necessidade de se ter em Mossoró-RN um grupo que tocasse os Frevos de rua, Frevo canção, arrasta-pé e canções populares do Nordeste.<br><br>
+              A proposta era criar uma formação autêntica — com voz, instrumentos de sopro, percussão e acordeon — e um grupo itinerante, capaz de se apresentar tanto nos palcos quanto no chão, mantendo a essência das tradições populares.<br><br>
+              O nome "Pode Inté Fôr" surgiu a partir de uma expressão típica nordestina, muito usada por Ivan Fernandes (sanfoneiro) durante os ensaios, onde o diálogo era repleto de frases como "Ah! Se sesse" e a resposta bem-humorada: "Pode até fôr". Inspirado nesses momentos marcantes e carregados de identidade, Josemberg decidiu dar esse nome único ao grupo, trazendo o significado de continuidade e autenticidade: não pode ser porque já foi, é passo, é Inté mais.<br><br>
+              Desde então, o Pode Inté For se consolidou como referência em alegria, celebração e resistência da cultura do Frevo, promovendo projetos abertos, oficinas e apresentações que unem gerações e mantêm viva essa tradição em Mossoró e região.
+            </p>
+            <p class="sobre-fundador-nome"><strong>Fundador:&nbsp;</strong>Josemarques Freitas</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Newsletter / Novidades -->
+    <section id="newsletter" class="section fotos-section">
+      <div class="container">
+        <h2 class="section-title">Fique por dentro de tudo</h2>
+        <p class="section-intro">
+          Receba notícias sobre eventos, ensaios e atividades educativas.
+        </p>
+        <form class="contato-grid newsletter-form">
+          <div class="contato-item">
+            <label for="email-news" class="newsletter-label">Seu e-mail</label>
+            <input
+              id="email-news"
+              type="email"
+              placeholder="seuemail@exemplo.com"
+              required
+              class="newsletter-input"
+            />
+            <button type="submit" class="btn btn-primary newsletter-submit">
+              Inscreva-se
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
     
+    <div style="text-align:center; margin-bottom: 32px;">
+      <a href="/" class="btn btn-secondary" style="display:inline-block; padding:10px 24px; font-size:1rem; border-radius:4px; background:#1a1a1a; color:#fff; text-decoration:none; margin-top: 10px;">
+        <i class="fas fa-arrow-left"></i> Voltar para a página inicial
+      </a>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> Pode Inte For — Todos os direitos reservados.</p>
+        <p class="footer-dev">Site realizado para o projeto de extensão ADS de Josemarques Freitas.</p>
+      </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
 </body>
 </html>
